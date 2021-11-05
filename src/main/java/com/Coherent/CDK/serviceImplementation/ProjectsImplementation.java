@@ -6,9 +6,10 @@ import com.Coherent.CDK.repository.ProjectsRepository;
 import com.Coherent.CDK.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+
 @Service
+
 public class ProjectsImplementation implements ProjectService {
     @Autowired
     private ProjectsRepository projectsRepository;
