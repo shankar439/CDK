@@ -1,13 +1,19 @@
 package com.Coherent.CDK.entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "datas")
+@Data
+@NoArgsConstructor@AllArgsConstructor
 public class Datas {
 
     @Id
@@ -22,11 +28,11 @@ public class Datas {
     @Column(columnDefinition = "TEXT")
     private String data;
 
-    @Column(name = "is_active", columnDefinition = "Byte default 1")
-    private Byte isActive;
+    @Column(name = "is_active", columnDefinition = "TINYINT default 1")
+    private byte isActive;
 
-    @Column(name = "delete_flag", columnDefinition = "Byte default 0")
-    private Byte deleteFlag;
+    @Column(name = "delete_flag", columnDefinition = "TINYINT default 0")
+    private byte deleteFlag;
 
     @Column(name = "created_at")
     @CreationTimestamp

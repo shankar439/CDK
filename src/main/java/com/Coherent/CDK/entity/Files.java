@@ -34,11 +34,11 @@ public class Files {
     @Size(min = 3, max = 100)
     private String path;
 
-    @Column(name = "is_active", columnDefinition = "Byte default 1")
-    private Byte isActive;
+    @Column(name = "is_active", columnDefinition = "TINYINT default 1")
+    private byte isActive;
 
-    @Column(name = "delete_flag", columnDefinition = "Byte default 0")
-    private Byte deleteFlag;
+    @Column(name = "delete_flag", columnDefinition = "TINYINT default 0")
+    private byte deleteFlag;
 
     @Column(name = "created_at")
     @CreationTimestamp
