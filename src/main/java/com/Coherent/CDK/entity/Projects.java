@@ -1,6 +1,6 @@
 package com.Coherent.CDK.entity;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -12,10 +12,9 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "projects")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "projects")
 @SQLDelete(sql = "Update projects SET deleted_flag = 1 Where id =?")
 public class Projects {
     @Id
