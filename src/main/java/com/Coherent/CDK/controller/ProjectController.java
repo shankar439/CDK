@@ -18,7 +18,8 @@ public class ProjectController {
     @PostMapping("/create")
     public BaseResponse createProject(@RequestBody ProjectsDTO projectsDTO) {
         BaseResponse baseResponse = new BaseResponse();
-        projectService.createProject(projectsDTO);
+        baseResponse.setData(projectService.createProject(projectsDTO));
+//        projectService.createProject(projectsDTO);
         return baseResponse;
     }
 

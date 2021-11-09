@@ -1,50 +1,57 @@
 package com.Coherent.CDK.entity;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "projects")
-@Data
-@NoArgsConstructor
-@SQLDelete(sql = "Update projects SET deleted_flag = 1 Where id =?")
-public class Projects {
+@Getter
+@Setter
+@SQLDelete(sql = "UPDATE files SET delete_flag=1 WHERE file_id= ? ")
+@Table(name = "files")
+public class Files {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Short id;
+    @Column(name = "file_id")
+    private  Short id;
 
-    @NonNull
-    @Column(name = "name")
-    @Size(min = 3, max = 20)
-    private String name;
+    @Column(name = "original_name")
+    @Size(min = 3, max = 100)
+    private String originalName;
+
+    @Column(name = "generated_name")
+    @Size(min = 3, max = 50)
+    private String generatedName;
+
+    @Column(name = "path")
+    @Size(min = 3, max = 100)
+    private String path;
 
     @Column(name = "is_active", columnDefinition = "TINYINT default 1")
     private byte isActive;
 
-    @Column(name = "deleted_flag", columnDefinition = "TINYINT default 0")
-    private byte deletedFlag;
+    @Column(name = "delete_flag", columnDefinition = "TINYINT default 0")
+    private byte deleteFlag;
 
     @Column(name = "created_at")
     @CreationTimestamp
     private LocalDateTime createdAt;
 
+    @Column(name = "created_by")
+    private String createdBy;
+
     @Column(name = "modified_at")
     @UpdateTimestamp
     private LocalDateTime modifiedAt;
 
-    @NonNull
-    @Column(name = "created_by")
-    private String createdBy;
-
-    @NonNull
     @Column(name = "modified_by")
     private String modifiedBy;
+
 }

@@ -3,7 +3,11 @@ package com.Coherent.CDK.dto;
 import lombok.Data;
 
 @Data
-public class ProjectsDTO {
+public class DatasDTO {
+
     private String name;
-    private String email;
+
+    private String data;
+
+    private Short filesId;
 }
