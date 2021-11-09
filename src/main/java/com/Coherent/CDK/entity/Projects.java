@@ -40,4 +40,11 @@ public class Projects {
     @UpdateTimestamp
     private LocalDateTime modifiedAt;
 
+    @NonNull
+    @Column(name = "created_by")
+    private String createdBy;
+
+    @NonNull
+    @Column(name = "modified_by")
+    private String modifiedBy;
 }

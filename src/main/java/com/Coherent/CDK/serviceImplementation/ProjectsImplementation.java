@@ -17,6 +17,11 @@ public class ProjectsImplementation implements ProjectService {
     public String createProject(ProjectsDTO projectsDTO) {
         Projects projects = new Projects();
         projects.setName(projectsDTO.getName());
+        String email = projectsDTO.getEmail();
+        int position = email.indexOf("@");
+        String name = email.substring(0, position);
+        projects.setCreatedBy(name);
+        projects.setModifiedBy(name);
         projectsRepository.save(projects);
         return "Success";
     }

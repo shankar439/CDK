@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class ProjectsDTO {
     private String name;
+    private String email;
 }
