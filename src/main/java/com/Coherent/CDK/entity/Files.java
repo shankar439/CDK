@@ -1,6 +1,7 @@
 package com.Coherent.CDK.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @SQLDelete(sql = "UPDATE files SET delete_flag=1 WHERE file_id= ? ")
 @Table(name = "files")
 public class Files {
@@ -23,22 +25,21 @@ public class Files {
     private  Short id;
 
     @Column(name = "original_name")
-    @Size(min = 3, max = 100)
     private String originalName;
 
     @Column(name = "generated_name")
-    @Size(min = 3, max = 50)
+   // @Size(min = 3, max = 50)
     private String generatedName;
 
     @Column(name = "path")
-    @Size(min = 3, max = 100)
+   // @Size(min = 3, max = 100)
     private String path;
 
-    @Column(name = "is_active", columnDefinition = "Byte default 1")
-    private Byte isActive;
+    @Column(name = "is_active", columnDefinition = "TINYINT default 1")
+    private byte isActive;
 
-    @Column(name = "delete_flag", columnDefinition = "Byte default 0")
-    private Byte deleteFlag;
+    @Column(name = "delete_flag", columnDefinition = "TINYINT default 0")
+    private byte deleteFlag;
 
     @Column(name = "created_at")
     @CreationTimestamp

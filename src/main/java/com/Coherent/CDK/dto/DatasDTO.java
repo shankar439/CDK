@@ -1,13 +1,19 @@
 package com.Coherent.CDK.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+import java.util.List;
+
+@Getter
+@Setter
 public class DatasDTO {
 
     private String name;
 
-    private String data;
+    private String details;
 
     private Short filesId;
+
+    private List<ProjectsDTO> projectsId;
 }
