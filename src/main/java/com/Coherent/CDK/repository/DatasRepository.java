@@ -6,10 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface DatasRepository extends JpaRepository<Datass,Short> {
 
    // @Query(value = "SELECT * from Datass ds WHERE delete_flag = 0 ORDER BY name",nativeQuery = true)
-    List<Datass> findByName(String name);
+    Optional<Datass> findByName(String name);
 }

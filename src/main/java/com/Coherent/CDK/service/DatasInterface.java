@@ -5,13 +5,14 @@ import com.Coherent.CDK.entity.Datass;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface DatasInterface {
 
     List<Datass> getAllDatas();
 
-    List<Datass> SearchByName(String name);
+    Optional<Datass> SearchByName(String name);
 
     String createDatas(DatasDTO datasDTO);
 }
