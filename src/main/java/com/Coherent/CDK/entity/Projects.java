@@ -1,6 +1,5 @@
 package com.Coherent.CDK.entity;
 
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -22,6 +21,7 @@ public class Projects {
     @Column(name = "id")
     private Short id;
 
+    @NonNull
     @Column(name = "name")
     @Size(min = 3, max = 20)
     private String name;
@@ -29,8 +29,8 @@ public class Projects {
     @Column(name = "is_active", columnDefinition = "TINYINT default 1")
     private byte isActive;
 
-    @Column(name = "delete_flag", columnDefinition = "TINYINT default 0")
-    private byte deleteFlag;
+    @Column(name = "deleted_flag", columnDefinition = "TINYINT default 0")
+    private byte deletedFlag;
 
     @Column(name = "created_at")
     @CreationTimestamp
@@ -40,4 +40,11 @@ public class Projects {
     @UpdateTimestamp
     private LocalDateTime modifiedAt;
 
+    @NonNull
+    @Column(name = "created_by")
+    private String createdBy;
+
+    @NonNull
+    @Column(name = "modified_by")
+    private String modifiedBy;
 }
