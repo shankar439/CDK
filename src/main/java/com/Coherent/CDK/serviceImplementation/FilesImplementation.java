@@ -25,7 +25,7 @@ public class FilesImplementation implements FilesService {
         String originalName = StringUtils.cleanPath(file.getOriginalFilename());
 
         String path = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/download/").
+                .path("/file/download/").
                 path(originalName).toUriString();
 
         try {
