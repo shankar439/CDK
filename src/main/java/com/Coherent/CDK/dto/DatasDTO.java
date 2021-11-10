@@ -15,5 +15,5 @@ public class DatasDTO {
 
     private Short filesId;
 
-    private List<ProjectsDTO> projectsId;
+    private Short projectsId;
 }

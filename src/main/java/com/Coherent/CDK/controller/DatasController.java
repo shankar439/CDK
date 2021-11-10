@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RequestMapping("/cdk-logic-service/datas")
@@ -24,7 +25,7 @@ public class DatasController {
         return baseResponse;
     }
 
-    @GetMapping("/getAll/{datas}")
+    @GetMapping("/getAll")
     public BaseResponse<List<Datass>> getAllDatas( ){
         BaseResponse<List<Datass>> baseResponse = null;
         baseResponse= BaseResponse.<List<Datass>>builder().data(datasInterface.getAllDatas()).build();
@@ -32,9 +33,9 @@ public class DatasController {
     }
 
     @GetMapping("/{name}")
-    public BaseResponse<List<Datass>> SearchByName(@PathVariable String name){
-        BaseResponse<List<Datass>> baseResponse;
-        baseResponse=BaseResponse.<List<Datass>>builder().data(datasInterface.SearchByName(name)).build();
+    public BaseResponse<Optional<Datass>> SearchByName(@PathVariable String name){
+        BaseResponse<Optional<Datass>> baseResponse;
+        baseResponse=BaseResponse.<Optional<Datass>>builder().data(datasInterface.SearchByName(name)).build();
         return baseResponse;
     }
 }

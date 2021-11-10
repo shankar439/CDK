@@ -15,25 +15,29 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@SQLDelete(sql = "UPDATE files SET delete_flag=1 WHERE file_id= ? ")
+@SQLDelete(sql = "UPDATE files SET delete_flag=1 WHERE id= ? ")
 @Table(name = "files")
 public class Files {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "file_id")
+    @Column(name = "id")
     private  Short id;
 
     @Column(name = "original_name")
+    @Size(min = 3, max = 100)
     private String originalName;
 
     @Column(name = "generated_name")
-   // @Size(min = 3, max = 50)
+    @Size(min = 3, max = 50)
     private String generatedName;
 
     @Column(name = "path")
-   // @Size(min = 3, max = 100)
+    @Size(min = 3, max = 100)
     private String path;
+
+    @Lob
+    private byte[] data;
 
     @Column(name = "is_active", columnDefinition = "TINYINT default 1")
     private byte isActive;
