@@ -1,9 +1,7 @@
 package com.Coherent.CDK.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
@@ -12,8 +10,10 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "datas")
-@Data
-@NoArgsConstructor@AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+
 public class Datas {
 
     @Id
