@@ -20,8 +20,9 @@ public class ProjectsImplementation implements ProjectService {
         String email = projectsDTO.getEmail();
         int position = email.indexOf("@");
         String name = email.substring(0, position);
-        projects.setCreatedBy(name);
-        projects.setModifiedBy(name);
+        String username = name.substring(0, 1).toUpperCase() + name.substring(1,position);
+        projects.setCreatedBy(username);
+        projects.setModifiedBy(username);
         projectsRepository.save(projects);
         return "Success";
     }

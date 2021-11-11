@@ -20,7 +20,7 @@ public class FilesImplementation implements FilesService {
     private FilesRepository filesRepository;
 
     @Override
-    public Files storeFiles(MultipartFile file) {
+    public Files storeFiles(MultipartFile file,String email) {
 
         String originalName = StringUtils.cleanPath(file.getOriginalFilename());
 
@@ -32,12 +32,19 @@ public class FilesImplementation implements FilesService {
             if (originalName.contains("..")) {
                 throw new FileStorageException("Sorry! originalFilename contains invalid path sequence " + originalName);
             }
-
             Files files =  new Files();
             files.setPath(path);
             files.setOriginalName(originalName);
             files.setGeneratedName(file.getContentType());
             files.setData(file.getBytes());
+
+           // String email = .getEmail();
+            int position = email.indexOf("@");
+            String name = email.substring(0, position);
+            String username = name.substring(0, 1).toUpperCase() + name.substring(1,position);
+            files.setCreatedBy(username);
+            files.setModifiedBy(username);
+
             filesRepository.save(files);
             return files;
         }

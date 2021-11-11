@@ -3,8 +3,6 @@ package com.Coherent.CDK.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 public class DatasDTO {
@@ -12,6 +10,8 @@ public class DatasDTO {
     private String name;
 
     private String details;
+
+    private String email;
 
     private Short filesId;
 

@@ -26,8 +26,9 @@ public class FilesController {
     private FilesImplementation filesImplementation;
 
     @PostMapping("/upload")
-    public BaseResponse uploadFile(@RequestParam("file") MultipartFile file) {
-        Files originalName = filesImplementation.storeFiles(file);
+    public BaseResponse uploadFile(@RequestParam("file") MultipartFile file,
+                                   @RequestParam String email) {
+        Files originalName = filesImplementation.storeFiles(file,email);
 
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setData(originalName);

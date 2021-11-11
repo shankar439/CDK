@@ -9,7 +9,7 @@ public interface FilesService {
 
     Files deleteFile(Short id);
 
-    Files storeFiles(MultipartFile file);
+    Files storeFiles(MultipartFile file,String email);
 
     Files getFile(String originalName);
 }

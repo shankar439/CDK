@@ -9,7 +9,6 @@ import com.Coherent.CDK.repository.DatasRepository;
 import com.Coherent.CDK.repository.FilesRepository;
 import com.Coherent.CDK.repository.ProjectsRepository;
 import com.Coherent.CDK.service.DatasInterface;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +27,7 @@ public class DatasServiceImplements implements DatasInterface {
     @Autowired
     private FilesRepository filesRepository;
 
+    @Autowired
     private ProjectsRepository projectsRepository;
 
     @Override
@@ -49,23 +49,33 @@ public class DatasServiceImplements implements DatasInterface {
 
     @Override
     public String createDatas(DatasDTO datasDTO) {
+
         try {
+
         Datass datass = new Datass();
         datass.setName(datasDTO.getName());
+            String email = datasDTO.getEmail();
+            int position = email.indexOf("@");
+            String name = email.substring(0, position);
+            String username = name.substring(0, 1).toUpperCase() + name.substring(1);
+            datass.setCreatedBy(username);
+            datass.setModifiedBy(username);
         datass.setDetails(datasDTO.getDetails());
-
-//        Files files=filesRepository.getById(datasDTO.getFilesId());
-//        datass.setFilesId(files);
-//
         Optional<Files> files =filesRepository.findById(datasDTO.getFilesId());
         if(files.isPresent()){
             datass.setFilesId(files.get());
         }
 
-        Optional<Projects> projects = projectsRepository.findById(datasDTO.getProjectsId());
-        if (projects.isPresent()) {
-            datass.setProjectsId(projects.get());
-        }
+        Optional<Projects> projects=projectsRepository.findById(datasDTO.getProjectsId());
+            if (projects.isPresent()){
+                datass.setProjectsId(projects.get());
+
+            }
+            else
+            {
+                throw new RuntimeException("error");
+            }
+
         /*Datass datass1 = datass;
         datasDTO.getProjectsId().forEach(projectsDTO -> {
             Projects projects = projectsRepository.findById(projectsDTO.getId()).orElse(null);
