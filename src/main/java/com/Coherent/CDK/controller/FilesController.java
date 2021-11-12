@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/file")
+@RequestMapping("/cdk-logic-service/file")
 public class FilesController {
 
     @Autowired

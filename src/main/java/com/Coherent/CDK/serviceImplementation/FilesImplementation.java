@@ -25,7 +25,7 @@ public class FilesImplementation implements FilesService {
         String originalName = StringUtils.cleanPath(file.getOriginalFilename());
 
         String path = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/file/download/").
+                .path("/cdk-logic-service/file/download/").
                 path(originalName).toUriString();
 
         try {
