@@ -22,20 +22,20 @@ public class FilesImplementation implements FilesService {
     @Override
     public Files storeFiles(MultipartFile file,String email) {
 
-        String originalName = StringUtils.cleanPath(file.getOriginalFilename());
+        String originalFileName = StringUtils.cleanPath(file.getOriginalFilename());
 
         String path = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/cdk-logic-service/file/download/").
-                path(originalName).toUriString();
+                path(originalFileName).toUriString();
 
         try {
-            if (originalName.contains("..")) {
-                throw new FileStorageException("Sorry! originalFilename contains invalid path sequence " + originalName);
+            if (originalFileName.contains("..")) {
+                throw new FileStorageException("Sorry! originalFilename contains invalid path sequence " + originalFileName);
             }
             Files files =  new Files();
             files.setPath(path);
-            files.setOriginalName(originalName);
-            files.setGeneratedName(file.getContentType());
+            files.setOriginalFileName(originalFileName);
+            files.setGeneratedFileName(file.getContentType());
             files.setData(file.getBytes());
 
            // String email = .getEmail();
@@ -49,15 +49,16 @@ public class FilesImplementation implements FilesService {
             return files;
         }
         catch (IOException ex) {
-            throw new FileStorageException("Could not store file " + originalName + ". Please try again!", ex);
+            //throw  "Could not store file";
+            throw new FileStorageException("Could not store file " + originalFileName + ". Please try again!", ex);
         }
     }
 
     @Override
-    public Files getFile(String originalName) {
+    public Files getFile(String originalFileName) {
         try {
-            return filesRepository.findByOriginalName(originalName)
-                    .orElseThrow(() -> new FileNotFoundException("File not found with id " + originalName));
+            return filesRepository.findByOriginalFileName(originalFileName)
+                    .orElseThrow(() -> new FileNotFoundException("File not found with id " + originalFileName));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

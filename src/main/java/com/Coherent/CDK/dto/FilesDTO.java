@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class FilesDTO {
 
-    private String originalName;
+    private String originalFileName;
 
-    private String generatedName;
+    private String generatedFileName;
 
     private String path;
 

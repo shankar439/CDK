@@ -39,10 +39,15 @@ public class DatasServiceImplements implements DatasInterface {
     @Override
     public Optional<Datass> SearchByName(String name) {
         Optional<Datass> datasses=datasRepository.findByName(name);
-        if (datasses.isPresent() && datasses.get().getDeleteFlag()==0){
-            return datasses;
+//        if (datasses.isPresent() && datasses.get().getDeleteFlag()==0){
+//            return datasses;
+//        }else {
+//            throw new  ControllerException("404","The data is not available!!");
+//        }
+        if (datasses.isPresent() && datasses.get().getDeleteFlag()==1){
+            throw new ControllerException("404","The data is not available!!");
         }else {
-            throw new  ControllerException("404","The data is not available!!");
+            return datasses;
         }
 
     }

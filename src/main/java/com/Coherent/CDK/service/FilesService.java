@@ -11,5 +11,5 @@ public interface FilesService {
 
     Files storeFiles(MultipartFile file,String email);
 
-    Files getFile(String originalName);
+    Files getFile(String originalFileName);
 }

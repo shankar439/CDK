@@ -37,7 +37,7 @@
 
     <appender name="FILE-LOGGING-LOCAL"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>D:/log/logging.log</file>
+        <file>E:/log/logging.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
                 ${CONSOLE_LOG_PATTERN}
@@ -46,7 +46,7 @@
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily -->
-            <fileNamePattern>D:/log/archived/logging.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>E:/log/archived/logging.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100KB</maxFileSize>
@@ -79,7 +79,7 @@
 
     <appender name="FILE-ERROR-LOCAL"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>D:/log/err/error.log</file>
+        <file>E:/log/err/error.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
                 ${CONSOLE_LOG_PATTERN}
@@ -88,7 +88,7 @@
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily -->
-            <fileNamePattern>D:/log/err/archived/error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>E:/log/err/archived/error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100KB</maxFileSize>

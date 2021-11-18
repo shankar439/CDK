@@ -24,13 +24,13 @@ public class Files {
     @Column(name = "id")
     private  Short id;
 
-    @Column(name = "original_name")
+    @Column(name = "original_fileName")
     @Size(min = 3, max = 100)
-    private String originalName;
+    private String originalFileName;
 
-    @Column(name = "generated_name")
+    @Column(name = "generated_fileName")
     @Size(min = 3, max = 50)
-    private String generatedName;
+    private String generatedFileName;
 
     @Column(name = "path")
     @Size(min = 3, max = 100)

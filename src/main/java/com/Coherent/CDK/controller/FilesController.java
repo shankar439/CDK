@@ -28,19 +28,19 @@ public class FilesController {
     @PostMapping("/upload")
     public BaseResponse uploadFile(@RequestParam("file") MultipartFile file,
                                    @RequestParam String email) {
-        Files originalName = filesImplementation.storeFiles(file,email);
+        Files originalFileName = filesImplementation.storeFiles(file,email);
 
         BaseResponse baseResponse = new BaseResponse();
-        baseResponse.setData(originalName);
+        baseResponse.setData(originalFileName);
         return baseResponse;
     }
 
-    @GetMapping("/download/{originalName}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String originalName, HttpServletRequest request) {
+    @GetMapping("/download/{originalFileName}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable String originalFileName, HttpServletRequest request) {
 
-        Files files = filesImplementation.getFile(originalName);
-        return ResponseEntity.ok().contentType(MediaType.parseMediaType(files.getGeneratedName()))
-                .header(HttpHeaders.CONTENT_DISPOSITION,  "attachment; originalName=\"" + files.getOriginalName() + "\"")
+        Files files = filesImplementation.getFile(originalFileName);
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType(files.getGeneratedFileName()))
+                .header(HttpHeaders.CONTENT_DISPOSITION,  "attachment; originalFileName=\"" + files.getOriginalFileName() + "\"")
                 .body(new ByteArrayResource(files.getData()));
     }
 
