@@ -45,7 +45,7 @@ public class DatasServiceImplements implements DatasInterface {
 //            throw new  ControllerException("404","The data is not available!!");
 //        }
         if (datasses.isPresent() && datasses.get().getDeleteFlag()==1){
-            throw new ControllerException("404","The data is not available!!");
+            throw new ControllerException(404,"The data is not available!!");
         }else {
             return datasses;
         }
@@ -91,7 +91,7 @@ public class DatasServiceImplements implements DatasInterface {
             datasRepository.save(datass);
             return "Success";
         }catch (NoSuchElementException e){
-            throw new ControllerException("404","OOPS!! Something went wrong");
+            throw new ControllerException(404,"OOPS!! Something went wrong");
         }
     }
 

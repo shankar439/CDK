@@ -3,10 +3,12 @@ package com.Coherent.CDK.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
@@ -22,9 +24,11 @@ public class Datass {
     @Column(name = "id")
     private  Short id;
 
+    @NotNull
     @Column(name = "name")
     private String name;
 
+    @NotNull
     @Column(name = "details",columnDefinition = "TEXT")
     private String Details;
 
@@ -48,10 +52,12 @@ public class Datass {
     @Column(name = "modified_by")
     private String modifiedBy;
 
+    @NotNull
     @OneToOne
     @JoinColumn(name = "files_id_fk")
     private Files filesId;
 
+    @NotNull
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "project_id_fk")
     private Projects projectsId;

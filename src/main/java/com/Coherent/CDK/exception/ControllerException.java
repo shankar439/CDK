@@ -11,10 +11,10 @@ import org.springframework.stereotype.Component;
 public class ControllerException extends RuntimeException {
 
     private static final long serialVersionUID= 1L;
-    private String errorCode;
+    private int errorCode;
     private String errorMsg;
 
-    public ControllerException(String errorCode,String errorMsg){
+    public ControllerException(int errorCode,String errorMsg){
         super();
         this.errorCode=errorCode;
         this.errorMsg=errorMsg;

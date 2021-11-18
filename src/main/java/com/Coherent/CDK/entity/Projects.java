@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
@@ -21,7 +22,7 @@ public class Projects {
     @Column(name = "id")
     private Short id;
 
-    @NonNull
+    @NotNull
     @Column(name = "name")
     @Size(min = 3, max = 20)
     private String name;

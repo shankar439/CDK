@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-@RequestMapping("/cdk-logic-service/datas")
+@RequestMapping("/cdk-logic-service/data")
 @RestController
 public class DatasController {
 
@@ -32,7 +32,7 @@ public class DatasController {
         return baseResponse;
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/listByProject/{name}")
     public BaseResponse<Optional<Datass>> SearchByName(@PathVariable String name){
         BaseResponse<Optional<Datass>> baseResponse;
         baseResponse=BaseResponse.<Optional<Datass>>builder().data(datasInterface.SearchByName(name)).build();

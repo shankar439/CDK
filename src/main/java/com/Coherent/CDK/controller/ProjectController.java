@@ -19,11 +19,10 @@ public class ProjectController {
     public BaseResponse createProject(@RequestBody ProjectsDTO projectsDTO) {
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setData(projectService.createProject(projectsDTO));
-//        projectService.createProject(projectsDTO);
         return baseResponse;
     }
 
-    @GetMapping("/List")
+    @GetMapping("/list")
     public BaseResponse<List<Projects>> listOfProject() {
         BaseResponse<List<Projects>> baseResponse = null;
         baseResponse = BaseResponse.<List<Projects>>builder().data(projectService.listOfProject()).build();
